@@ -2,7 +2,7 @@ import React from 'react';
 import styles from'./Form.module.css';
 import useSelector from '../hooks/useSelector'
 
-const Form = () => {
+const Form = ({setCategory}) => {
 
 
     
@@ -19,11 +19,19 @@ const Form = () => {
     //using useSelector
     const [category, SelectNews] = useSelector('general', categories);
 
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        setCategory(category);
+
+    }
+
     return ( 
         <div className={`${styles.searching} row`}>
             <div className="col s12 m8 offset-m2">
                 <form
-                
+                    onSubmit={handleSubmit}
                 >
                     <h2 className={styles.heading}>Find Word's News by Category</h2>
 
